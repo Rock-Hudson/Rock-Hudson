@@ -3,6 +3,7 @@
 #  <img src="https://www.imagensanimadas.com/data/media/1487/estrela-de-rock-imagem-animada-0013.gif" border="0" alt="mulher-imagem-animada-0156" width ="25" /> About me
 
 <img src="https://www.imagensanimadas.com/data/media/1571/estudante-imagem-animada-0046.gif" border="0" alt="emoticon-e-smiley-computador-imagem-animada-0078" width ="25" /> Graduating in Systems Analysis and Development from UNINTER college.
+
 <img src="https://www.imagensanimadas.com/data/media/56/computador-imagem-animada-0494.gif" border="0" alt="emoticon-e-smiley-computador-imagem-animada-0078" width ="25" /> I'm working with BackEnd and FrontEnd personal projects.
 
 <img src="https://www.imagensanimadas.com/data/media/604/nave-espacial-e-espaconave-imagem-animada-0020.gif" border="0" alt="gato-imagem-animada-0072" width ="30" />Fun fact about me: I love astronomy, astrophysics, Jiu-Jitsu.
