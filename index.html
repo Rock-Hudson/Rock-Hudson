@@ -1,12 +1,431 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rock Hudson</title>
+    <title>r avellarmillas | Guitarra Brutal</title>
+    <!-- Google Fonts: Oswald para títulos pesados e Inter para leitura -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    <!-- Swiper.js CSS para o Slider Inovador -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    
+    <style>
+        :root {
+            --bg-color: #000000;
+            --card-bg: #0a0a0a;
+            --border-color: #1a1a1a;
+            --accent-color: #ff003c; /* Vermelho brutal */
+            --text-main: #ffffff;
+            --text-muted: #888888;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-color); }
+        ::-webkit-scrollbar-thumb { background: var(--accent-color); }
+
+        /* Header / Nav */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .logo {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .logo span { color: var(--accent-color); }
+
+        nav a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            margin-left: 30px;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+        nav a:hover { color: var(--accent-color); }
+
+        /* Hero Section */
+        #hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding: 0 20px;
+            background: linear-gradient(to right, rgba(0,0,0,0.9) 40%, rgba(0,0,0,0.2)), url('sua-foto-hero.jpg') no-repeat center center/cover;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            z-index: 2;
+        }
+
+        .hero-content h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 5rem;
+            line-height: 1;
+            text-transform: uppercase;
+            letter-spacing: -2px;
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .btn-brutal {
+            display: inline-block;
+            padding: 15px 40px;
+            background: transparent;
+            color: var(--text-main);
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: 2px solid var(--accent-color);
+            text-decoration: none;
+            position: relative;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-brutal:hover {
+            background: var(--accent-color);
+            box-shadow: 0 0 20px var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        /* Seções Gerais */
+        section {
+            padding: 100px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 3rem;
+            text-transform: uppercase;
+            margin-bottom: 60px;
+            border-left: 5px solid var(--accent-color);
+            padding-left: 15px;
+            letter-spacing: 1px;
+        }
+
+        /* Slider de Shows (Swiper) */
+        .swiper {
+            width: 100%;
+            padding-top: 20px;
+            padding-bottom: 50px;
+        }
+
+        .swiper-slide {
+            background-position: center;
+            background-size: cover;
+            width: 300px;
+            height: 400px;
+            filter: grayscale(100%) contrast(120%);
+            transition: 0.5s;
+            border: 1px solid var(--border-color);
+        }
+
+        .swiper-slide-active {
+            filter: grayscale(0%) contrast(100%);
+            border: 1px solid var(--accent-color);
+            box-shadow: 0 0 30px rgba(255, 0, 60, 0.2);
+        }
+
+        .swiper-slide img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Curso & Harmonia */
+        .grid-curso {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .modulo-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 30px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .modulo-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 4px; height: 100%;
+            background: var(--accent-color);
+            transform: scaleY(0);
+            transition: transform 0.3s;
+        }
+
+        .modulo-card:hover {
+            border-color: rgba(255, 0, 60, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .modulo-card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .num-modulo {
+            font-family: 'Oswald', sans-serif;
+            font-size: 3rem;
+            color: rgba(255, 0, 60, 0.15);
+            position: absolute;
+            top: 10px;
+            right: 20px;
+        }
+
+        .modulo-card h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .modulo-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Contato / Aulas */
+        .contato-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        @media (max-width: 768px) {
+            .contato-container { grid-template-columns: 1fr; }
+            .hero-content h1 { font-size: 3.2rem; }
+            nav { display: none; } /* Simplificação para mobile */
+        }
+
+        .info-aulas p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        input, textarea {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 15px;
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            transition: border-color 0.3s;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+    </style>
 </head>
 <body>
-    <H1>Rock Hudson Avelar Millas</H1>
-    <h2>Analista de Sistemas (Implantação/Suporte)</h2>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">Rock Avelar <span>millas</span></div>
+            <nav>
+                <a href="#hero">Início</a>
+                <a href="#shows">Shows</a>
+                <a href="#curso">Curso & Harmonia</a>
+                <a href="#aulas">Aulas</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section / Home -->
+    <section id="hero">
+        <div class="hero-content">
+            <h1>ROCK HUDSON<br><span style="color: var(--accent-color);">GUITARRA BRUTAL</span></h1>
+            <p>Dominando a fusão entre a brutalidade do metal e a sofisticação da harmonia teórica. Entre para o time e transforme sua técnica de uma vez por todas.</p>
+            <a href="#aulas" class="btn-brutal">Garantir Minha Vaga</a>
+        </div>
+    </section>
+
+    <!-- Galeria de Shows (Slider Inovador) -->
+    <section id="shows">
+        <h2 class="section-title">Estrada & Palcos</h2>
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <!-- Card 1 -->
+                <div class="swiper-slide">
+                    <img src="/src/images/chaos&carnage-33.jpeg" alt="Show r avellarmillas">
+                </div>
+                <!-- Card 2 -->
+                <div class="swiper-slide">
+                    <img src="/src/images/IMG_7161.JPG" alt="Show r avellarmillas">
+                </div>
+                <!-- Card 3 -->
+                <div class="swiper-slide">
+                    <img src="/src/images/IMG_7162.JPG" alt="Show r avellarmillas">
+                </div>
+                <!-- Card 4 -->
+                <div class="swiper-slide">
+                    <img src="/src/images/IMG_7163.JPG" alt="Show r avellarmillas">
+                </div>
+                <!-- Card 5 -->
+                <div class="swiper-slide">
+                    <img src="/src/images/IMG_7164.JPG" alt="Show r avellarmillas">
+                </div>
+            </div>
+            <!-- Paginação do Slider -->
+            <div class="swiper-pagination"></div>
+        </div>
+    </section>
+
+    <!-- Curso Básico & Harmonia -->
+    <section id="curso">
+        <h2 class="section-title">Curso de Guitarra & Harmonia</h2>
+        <div class="grid-curso">
+            
+            <div class="modulo-card">
+                <div class="num-modulo">01</div>
+                <h3>Mecânica & Precisão</h3>
+                <p>Postura, sincronia de palhetada alternada, economia de movimentos e aquecimentos brutais para evitar lesões.</p>
+            </div>
+
+            <div class="modulo-card">
+                <div class="num-modulo">02</div>
+                <h3>Intervalos & Acordes</h3>
+                <p>Desmistificando a teoria musical do zero. Entenda como as notas se relacionam e domine a formação de acordes no braço.</p>
+            </div>
+
+            <div class="modulo-card">
+                <div class="num-modulo">03</div>
+                <h3>Escalas & Aplicação</h3>
+                <p>Escala maior, menor, pentatônica e os Modos Gregos aplicados diretamente na criação de solos e riffs pesados.</p>
+            </div>
+
+            <div class="modulo-card">
+                <div class="num-modulo">04</div>
+                <h3>Rítmica & Drop Tunings</h3>
+                <p>O segredo do peso. Técnicas de palm muting, subdivisões rítmicas complexas e exploração de afinações baixas.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Aulas / Contato -->
+    <section id="aulas">
+        <h2 class="section-title">Evolua Seu Som</h2>
+        <div class="contato-container">
+            <div class="info-aulas">
+                <p>Quer levar sua técnica para o próximo nível? Estou abrindo vagas para mentorias e aulas de guitarra personalizadas, presenciais ou online.</p>
+                <p>Seja você um iniciante querendo entender o básico ou um guitarrista de metal querendo fritar na harmonia e na velocidade, eu montei o método certo.</p>
+                <div style="font-family: 'Oswald'; font-size: 1.5rem; color: var(--accent-color);">VAGAS LIMITADAS.</div>
+            </div>
+            
+            <div>
+                <form action="#" method="POST">
+                    <input type="text" placeholder="Seu Nome completo" required>
+                    <input type="email" placeholder="Seu melhor E-mail" required>
+                    <textarea rows="5" placeholder="Fale um pouco sobre seu nível atual e seus objetivos na guitarra" required></textarea>
+                    <button type="submit" class="btn-brutal" style="width: 100%;">Enviar Mensagem</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 r avellarmillas. Todos os direitos reservados. Design Brutal.</p>
+    </footer>
+
+    <!-- Swiper.js JavaScript para Efeito 3D Coverflow no Slider -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            effect: "coverflow",
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: "auto",
+            coverflowEffect: {
+                rotate: 30,
+                stretch: 0,
+                depth: 100,
+                modifier: 1,
+                slideShadows: false,
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            loop: true,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
+        });
+    </script>
 </body>
 </html>
